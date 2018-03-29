@@ -349,7 +349,7 @@
                 <div class="col-md-6">
                     <!-- Form Start-->
                     <div class="contact_from">
-                        <form action="https://formspree.io/revues.info@gmail.com" method="post">
+                        <form id="contactform" method="post">
                             <!-- Message Input Area Start -->
                             <div class="contact_input_area">
                                 <div class="row">
@@ -373,7 +373,7 @@
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-12">
-                                        <button type="submit" class="btn submit-btn">Send Now</button>
+                                        <button type="submit" class="btn submit-btn" id="sendMessage">Send Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -416,6 +416,21 @@
     <!-- ***** Footer Area Start ***** -->
 
     <!-- Jquery-2.2.4 JS -->
+    <script>
+
+    $("#sendMessage").on("click", function() {
+    message = $("#contactform").serialize();
+    $.ajax({
+        url: "//formspree.io/revues.info@gmail.com", 
+        method: "POST",
+        data: {message: message},
+        dataType: "json"
+    });
+    alert('Thanks for the email, we\'ll be in touch promptly.');
+    return false;
+    });
+
+    </script>
     <script src="js/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
     <script src="js/popper.min.js"></script>
